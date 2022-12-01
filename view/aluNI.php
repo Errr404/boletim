@@ -27,9 +27,10 @@ if($ne->rowCount() == 0) {
     </style>
 <div class="notes" id='#text'>
     <div class='n1 badge bg-primary text-wrap'>
-        <span class='mt-1 valor-nota'>
+        <span class='mt-1 valor-nota' id='#textN'>
             <?php 
                 $mat = $row_ano['nota'];
+                echo $mat;
                 $nota = json_encode($mat);
                     ?>
         </span>

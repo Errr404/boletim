@@ -1,4 +1,7 @@
 <?php
+
+    
+
     $hostname = "localhost";
     $DB = "aluno";
     $user = "root";

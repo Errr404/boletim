@@ -7,21 +7,6 @@ include_once '../includes/sidebar.php';
 $per = $_GET['id'];
 $alu = $_GET['alu'];
 
-// $p = "SELECT nota_período, nota_port, nota_arte, nota_EF, nota_hist, nota_geo, nota_mat, nota_cie, nota_EC FROM tb_nota WHERE nota_período = $per;";
-// $resp = $pdo->prepare($p);
-// $resp->execute();
-
-// //$pM = ;
-
-// if(($resp) AND ($resp->rowCount() != 0)){
-//     while($row = $resp->fetch(PDO::FETCH_ASSOC)){
-
-//         include_once '../includes/sidebar.php';
-//         echo "<center>".$row['nota_port']."</center>";
-
-//     }
-// }
-
 $media = "SELECT (SUM(nota_port)/2) as port FROM tb_nota WHERE nota_período = 1 AND alu_id = $alu";
 $resultM = $pdo->prepare($media);
 $resultM->execute();
@@ -55,8 +40,8 @@ if (($resultM) and ($resultM->rowCount() != 0)) {
         type: 'POST',
         data: '{(<?php echo 'aluNI.php?per=1&mat=nota_port&alu='.$alu.''?>)',
         success: function(res) {
-            var headline = $(res).text($nota); 
-            $("#collapseExample").html(headline);
+            var headline = $(res).text('#textN'); 
+            $("#AluNote").html(res);
         }
     });        
 </script>
