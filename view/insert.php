@@ -25,6 +25,7 @@ include_once '../includes/header.php';
 </style>
 <body>
     <?php 
+        include_once '../includes/preloader.php';
         include_once '../includes/sidebar.php';
     ?>
 

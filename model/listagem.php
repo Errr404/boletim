@@ -71,7 +71,7 @@ if (!empty($dataRequest['search']['value'])) {
 }
 
 
-$sqlAlu .= " ORDER BY " . $col[$dataRequest['order'][0]['column']] . " " . $dataRequest['order'][0]['dir'] ." LIMIT :inicio, :quantidade";
+$sqlAlu .= " ORDER BY " . $col[$dataRequest['order'][0]['column']] . " " . $dataRequest['order'][0]['dir'] ." LIMIT :inicio , :quantidade";
 
 $sqlResult = $pdo->prepare($sqlAlu);
 $sqlResult->bindParam(':inicio', $dataRequest['start'], PDO::PARAM_INT);

@@ -5,11 +5,11 @@
     include_once '../controller/conection.php';
 
 
-$per = $_GET['per'];
-$mat = $_GET['mat'];
-$alu = $_GET['alu'];
+// $per = $_GET['per'];
+// $mat = $_GET['mat'];
+// $alu = $_GET['alu'];
 
-$n = "SELECT $mat as nota FROM tb_nota WHERE nota_período = $per AND alu_id = $alu;";
+$n = "SELECT nota_port as nota FROM tb_nota WHERE nota_período = 1 AND alu_id = 147;";
 $ne = $pdo->prepare($n);
 $ne->execute();
 
@@ -25,10 +25,13 @@ if($ne->rowCount() == 0) {
             margin-top: 2vh;
         }
     </style>
-<div class="notes">
+<div class="notes" id='#text'>
     <div class='n1 badge bg-primary text-wrap'>
         <span class='mt-1 valor-nota'>
-            <?php echo  $row_ano['nota'] ?>
+            <?php 
+                $mat = $row_ano['nota'];
+                $nota = json_encode($mat);
+                    ?>
         </span>
     </div>
 </div>

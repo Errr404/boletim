@@ -9,16 +9,18 @@
     
     <link rel="stylesheet" href="../vendor/bootstrap-5.2.0-dist/css/bootstrap-grid.min.css">
     <link href="../vendor/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js">
-
+   
     <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
     <link type="text/js" href="../assets/js/scripts.js">
 
 </head>
 
 <body>
+
 <?php 
 
 include_once '../includes/header.php';
+include_once '../includes/preloader.php';
 include_once '../controller/conection.php';
 
 
@@ -76,5 +78,6 @@ echo "
 ?>
 
 </body>
+<script src="../assets/js/preloader.js"></script>
 
  </html>

@@ -110,38 +110,21 @@ $mat = array(
 //     $irow = $irow + 1;
 // }
 
-$l = 9;
-$c = 8;
-$il = 1;
-$ic = 1;
-while ($row = $result_usuarios->fetch(PDO::FETCH_ASSOC)) {
+
     // calculo de faltas 
-
-
-    extract($row);
-
     $html .= "<tbody>";
-   
     foreach ($mat as $key){
     $html .= "<tr>";
     $html .= "<td>$key</td>";
-    $html .= "<td>$nota_port</td>";
-    $html .= "<td>$nota_mat</td>";
-    $html .= "<td>$nota_geo</td>";
-    $html .= "<td>$nota_hist</td>";
-    $html .= "<td>$nota_EC</td>";
-    $html .= "<td>$nota_EF</td>";
-    $html .= "<td>$nota_cie</td>";
-    $html .= "<td>$nota_arte</td>";
-    }
+    $html .= "</tr>";
+    } 
+    $html .= "</tbody>";
+//     $row = $result_usuarios->fetch(PDO::FETCH_ASSOC);
+//     for($r=0; $r<count($row); $r++){
+//     $html .= "<td>$row[1]</td>";
 
-   
-   
+// }
 
-
-}
-$il ++;
-$ic ++;
 
 // $html.= "</td></tr>";
 // $html.= "</td></tr>";
@@ -166,6 +149,7 @@ $ic ++;
 // $p3 = $p2 / 200;
 // $html .= "<tr><td>faltas: $Faltas </td>";
 // $html .= "<td>frequencia: $p3% </td></tr>";
+
 
 // }
 // Referenciar o namespace Dompdf

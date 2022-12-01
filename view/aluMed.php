@@ -53,8 +53,9 @@ if (($resultM) and ($resultM->rowCount() != 0)) {
             $.ajax({
         url: 'http://localhost/boletim/view/AluNI.php',
         type: 'POST',
+        data: '{(<?php echo 'aluNI.php?per=1&mat=nota_port&alu='.$alu.''?>)',
         success: function(res) {
-            var headline = $(res).text('#text'); 
+            var headline = $(res).text($nota); 
             $("#collapseExample").html(headline);
         }
     });        
