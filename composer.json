@@ -1,0 +1,8 @@
+{
+    "name": "htdocs/boletim",
+    "autoload": {
+        "psr-4": {
+            "App\\": "controller"
+        }
+    }
+}

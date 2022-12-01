@@ -1,0 +1,22 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #d3d3d3;
+
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--body-color);
+}
+
+small{
+    font-size: 15px;
+    font-weight: 400;
+}
