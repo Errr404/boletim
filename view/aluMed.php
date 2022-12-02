@@ -2,7 +2,7 @@
 
 include_once '../controller/conection.php';
 include_once '../includes/header.php';
-include_once '../includes/sidebar.php';
+// include_once '../includes/sidebar.php';
 
 $per = $_GET['id'];
 $alu = $_GET['alu'];
@@ -13,7 +13,7 @@ $resultM->execute();
 if (($resultM) and ($resultM->rowCount() != 0)) {
     while ($rowM = $resultM->fetch(PDO::FETCH_ASSOC)) {
         echo " <center><p>
-            <a class='btn btn-primary mt-2' data-bs-toggle='collapse' href='#collapseExample' role='button' aria-expanded='false' aria-controls='collapseExample'
+            <a class='btn btn-primary mt-2' data-bs-toggle='collapse' onchange='pesqalu()' href='#collapseExample' role='button' aria-expanded='false' aria-controls='collapseExample'
              href='aluNI.php?per=1&mat=nota_port&alu=$alu'>medPort 1a P: " . $rowM['port'] . "
               
             </a>
@@ -27,6 +27,39 @@ if (($resultM) and ($resultM->rowCount() != 0)) {
     }
 }
 
+$maths = "SELECT * FROM tb_nota";
+$mathsQuery = $pdo->prepare($maths);
+$mathsQuery -> execute();
+
+while ($row = $mathsQuery -> fetch(PDO::FETCH_ASSOC)){
+    extract($row);
+    $port = array();
+    $mat = array();
+
+    if($row['nota_port']){
+        $port[$row['nota_período']][$row['nota_tipo']] = $row['nota_port'];
+        $mat[$row['nota_período']][$row['nota_tipo']] = $row['nota_mat'];
+    
+    }
+    echo json_encode($port).[1][" "];
+    echo json_encode($mat). $mat[2][" "];
+
+    $types = array();
+    $types = array(0 => "parcial", 1 => "global");
+
+    for($j = 1; $j <= 2; $j++) {
+        for($i = 1; $i <= 2; $i++) {
+            $soma = array_sum($port[$i]);
+            $soma .= array_sum($mat[$i]);
+            $avg = ($soma) / 2;
+            $avg = number_format($avg, 1, '.', '');
+            echo $avg;        // variável responsável por imprimir o valor.
+            $i++;
+        }
+    
+        $j++;
+    } 
+}
 
 ?>
 
@@ -37,7 +70,7 @@ if (($resultM) and ($resultM->rowCount() != 0)) {
 <script type="text/javascript">
             $.ajax({
         url: 'http://localhost/boletim/view/AluNI.php',
-        type: 'POST',
+        type: 'GET',
         data: '{(<?php echo 'aluNI.php?per=1&mat=nota_port&alu='.$alu.''?>)',
         success: function(res) {
             var headline = $(res).text('#textN'); 

@@ -28,7 +28,7 @@ $tipos = array(0 => "parcial", 1 => "global");
 for($j = 1; $j <= 2; $j++) {
     for($i = 1; $i <= 2; $i++) {
         $soma = array_sum($port[$i]);
-        $soma = array_sum($mat[$i]);
+        $soma .= array_sum($mat[$i]);
         $avg = ($soma) / 2;
         $avg = number_format($avg, 1, '.', '');
         $html = $avg;        // variável responsável por imprimir o valor.

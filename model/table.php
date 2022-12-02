@@ -71,23 +71,22 @@ $result_usuarios->execute();
    
    while($rowNotas = $notasRes->fetch(PDO::FETCH_ASSOC)){
     
-    foreach ($math as $m){
-            
-        echo "<tr>";
-        echo "<td>$m</td>";
-        echo "<td>".$rowNotas['nota_port']."</td>";
-        echo "<td>".$rowNotas['nota_mat']."</td>";
-        echo "<td>".$rowNotas['nota_geo']."</td>";
-        echo "<td>".$rowNotas['nota_hist']."</td>";
-        echo "<td>".$rowNotas['nota_EF']."</td>";
-        echo "<td>".$rowNotas['nota_EC']."</td>";
-        echo "<td>".$rowNotas['nota_cie']."</td>";
-        echo "<td>".$rowNotas['nota_arte']."</td>";
-        echo "</tr>";
-    }
-    exit();
-}
+    $arr = array("nota_port" => $rowNotas['nota_port'], "nota_mat" => $rowNotas['nota_mat'], 
+    "nota_geo" => $rowNotas['nota_geo'], "nota_history" => $rowNotas['nota_hist'], "nota_EF" => $rowNotas['nota_EF'],
+    "nota_EC" => $rowNotas['nota_EC'], "nota_cie" => $rowNotas['nota_cie'], "nota_arte" => $rowNotas['nota_arte'],
+    "Faltas" => $rowNotas['Faltas']);
 
+   }
+  
+   foreach ($math as $row){
+       echo "<tr>";
+       echo "<td>$row</td>";
+       echo "<td>".$arr['nota_port']."</td>";
+       echo "</tr>";
+   
+   }
+
+   
 
  ?>
  </tbody>
