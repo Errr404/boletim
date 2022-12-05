@@ -5,11 +5,11 @@
     include_once '../controller/conection.php';
 
 
-$per = $_GET['per'];
-$mat = $_GET['mat'];
-$alu = $_GET['alu'];
+// $id = $_GET['id'];
+$mat = $_POST['mat'];
+$alu = $_POST['alu'];
 
-$n = "SELECT $mat as nota FROM tb_nota WHERE nota_período = $per AND alu_id = $alu;";
+$n = "SELECT $mat as nota FROM tb_nota WHERE nota_período = 1 AND alu_id = $alu;";
 $ne = $pdo->prepare($n);
 $ne->execute();
 

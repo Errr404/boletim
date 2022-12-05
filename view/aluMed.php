@@ -41,16 +41,16 @@ while ($row = $mathsQuery -> fetch(PDO::FETCH_ASSOC)){
         $mat[$row['nota_período']][$row['nota_tipo']] = $row['nota_mat'];
     
     }
-    echo json_encode($port).[1][" "];
-    echo json_encode($mat). $mat[2][" "];
+    echo "PORT".json_encode($port).[1][""];
+    echo "MAT".json_encode($mat). $mat[2][""];
 
     $types = array();
     $types = array(0 => "parcial", 1 => "global");
 
-    for($j = 1; $j <= 2; $j++) {
-        for($i = 1; $i <= 2; $i++) {
+    for($j = 1; $j <= 4; $j++) {
+        for($i = 1; $i <= 4; $i++) {
             $soma = array_sum($port[$i]);
-            $soma .= array_sum($mat[$i]);
+            $soma = array_sum($mat[$i]);
             $avg = ($soma) / 2;
             $avg = number_format($avg, 1, '.', '');
             echo $avg;        // variável responsável por imprimir o valor.
@@ -70,8 +70,8 @@ while ($row = $mathsQuery -> fetch(PDO::FETCH_ASSOC)){
 <script type="text/javascript">
             $.ajax({
         url: 'http://localhost/boletim/view/AluNI.php',
-        type: 'GET',
-        data: '{(<?php echo 'aluNI.php?per=1&mat=nota_port&alu='.$alu.''?>)',
+        type: 'POST',
+        data: '{(<?php echo 'aluNI.php?id='.$per.'&mat=nota_port&alu='.$alu?>',
         success: function(res) {
             var headline = $(res).text('#textN'); 
             $("#AluNote").html(res);

@@ -1,5 +1,7 @@
 $(document).ready(function() {
     $('#TableList').DataTable({
+        "order": [0, "asc"],
+        "paging": true,
         "processing": true,
         "serverSide": true,
         "ajax": "../model/listagem.php",
