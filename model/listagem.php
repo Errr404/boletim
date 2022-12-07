@@ -24,7 +24,7 @@ $col = [
 //contagem dos registros
 
 
-$count = "SELECT COUNT(alu_id) AS Qntd FROM tb_aluno";
+$count = "SELECT COUNT(alu_id) AS qnt FROM tb_aluno";
 
 // Acessa o IF quando ha paramentros de pesquisa   
 if (!empty($dataRequest['search']['value'])) {
@@ -114,12 +114,10 @@ while ($rowSql = $sqlResult->fetch(PDO::FETCH_ASSOC)) {
 
 
 $dataResult = [
-    "draw" => intval($dataRequest['draw']),
-    "recordsTotal" => intval($RowCount['Qntd']),
-    "recordFiltered" => intval($RowCount['Qntd']),
-    "data" => $dados
-
-
+    "draw" => intval($dataRequest['draw']), // Para cada requisição é enviado um número como parâmetro
+    "recordsTotal" => intval($RowCount['qnt']), // Quantidade de registros que há no banco de dados
+    "recordsFiltered" => intval($RowCount['qnt']), // Total de registros quando houver pesquisa
+    "data" => $dados // Array de dados com os registros retornados da tabela usuarios
 ];
 
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
 
 </head>
-<div class="container mt-3 d-flex justify-content-center w-50" id="table">
+<div class="container mt-3 d-flex justify-content-center w-75" id="table">
 
     <table id="TableList" class="table table-dark table-hover display ml-3 w-100">
         <thead>

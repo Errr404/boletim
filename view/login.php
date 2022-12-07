@@ -1,139 +1,92 @@
 <?php
-//session
-//session_start();
-//header
-include_once "./header.php";
+
+include '../controller/conection.php';
+require_once  '../model/login.php';
 ?>
-    <link rel="stylesheet" href="../assets/css/main.css">
-  <!--Manter o formato do layout de cadastro-->
-   <style>
-    #pForm {
-      border-radius: 20px;
-    background-color: #4169E1;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 30px;
-}
-#inputROW {
-  width: 200px;
-}
-   </style>
-<div class="row" id="pForm">
-  <form action="../model/create.php" class="container" method="POST">
-    <h2>Formulário de cadastro</h2>
 
-    <!--div de nome e sobrenome-->
-    <h4 class="pt-3">Cadastre seus dados
-  
-    </h4>
-    <center>
-    <?php
-  if(isset($_SESSION['msg'])){ 
-    echo $_SESSION['msg'];
-    session_destroy();
-  }
 
-  ?>
-    </center>
-    <div class="row">
-        <!--Local onde a imagem vai ser inserida-->        
-        <p>Sua foto</p>       
-        <!--Dados(nome e sobrenome)-->
-        <div class="col" id="inputROW">   
-            <label>Nome</label>
-          <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" name="nome" require>
-        </div>
-        <div class="col" id="inputROW">
-            <label>Sobrenome</label>
-          <input type="text" class="form-control" placeholder="Sobrenome" aria-label="Sobrenome" name="sobrenome">
-        </div>
-      </div>
-      <!---div dos generos-->
-      <div class="row">
-        <div class="form-check col-3  align-self-center" style="margin-left:45px; width: 100px;">
-          <input class="form-check-input" type="radio" name="sexo" value="F">
-          <label class="form-check-label" for="flexRadioDefault1">
-            Feminino
-          </label>
-        </div>
-        <div class="form-check col-3 align-self-center" style="margin-left: 10px;">
-          <input class="form-check-input" type="radio" name="sexo" value="M">
-          <label class="form-check-label" for="flexRadioDefault2">
-            Masculino
-          </label>
-        </div>
-        <div class="col-6" style="margin-left: 45px;">
-          <label>Data de nascimento</label>
-          <input type="date" name="data_nasc" class="form-control">
-        </div>
-      
-    </div>
-    <div class="row">
-      <div class="col">
-    <label>Endereço</label>
-    <input type="text" class="form-control" name="endereco">
-  </div>
-  <div class="col">
-    <label>Telefone</label>
-    <input type="tel" name="telefone" id="teleF" class="form-control">
-  </div>
-  </div>
-    <!--Botão de cadastro-->
-    
-      <!--div de email e senha-->
-      <div class="row row-cols">
-      <div class="col pt-4">
-        <label>E-mail</label>
-        <input type="email" name="email" class="form-control">
-        </div>
-        <div class="col pt-4">
-        <label>Senha</label>
-        <input type="password" name="senha"  class="form-control">
-      </div>
-    </div>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <div class="col pt-4">
-      <label>E-mail de contato</label>
-      <input type="email" name="emailCTT" class="form-control">
-      </div>
-    <div class="col pt-4">
-      <label class="form-label">Descrição sobre você</label>
-      <input type="text" class="form-control" name="descricao">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../img/logo.svg" rel="icon">
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <title>Login</title>
+  <style>
+    body {
+      background-image: url('../img/login.png');
+      overflow-x: hidden;
+    }
+
+    .f-size {
+      font-size: 13px;
+    }
+
+    .i-bg {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .a-text {
+      text-decoration: none;
+    }
+
+    .vertical {
+      border-left: 1px solid black;
+      height: 400px;
+      position: absolute;
+      left: 53%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="row justify-content-center mt-5">
+
+
+    <div class="row justify-content-center w-25">
+      <form method="POST" class="row col-xs-12 col-sm-12 col-md-12 col-lg-12" action="#">
+
+        <p class="h3 mb-3">Entrar</p>
+        <div class="col-12 mb-2">
+          <div class="col-12 mb-2">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="text" name="login" class="form-control" id="inputEmail">
+          </div>
+          <div class="col-12 mb-3">
+            <label for="inputSenha" class="form-label">Senha</label>
+            <input type="text" name="pass" class="form-control" id="inputSenha">
+          </div>
+          <div class="row mb-3 px-0">
+            <div class="col-sm-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Lembre de mim
+                </label>
+              </div>
+            </div>
+          </div>
+          <center>
+            <button type="submit"  name="submit"class="btn btn-primary px-5 mb-3 ">Entrar</button><br>
+          </center>
+        </div>
+        <div class="text-dark">
+          <hr>
+        </div>
+
+
+      </form>
     </div>
-    <div class="col pt-4">
-      <label>Experiência</label>
-      <input type="text" name="experiencia" class="form-control">
-      </div>
-  <div>
-    <div class="col pt-4">
-      <label>Formação</label>
-      <input type="text" name="formacao" class="form-control">
-      </div>
-      <div class="row">
-      <div class="form-check col-3  align-self-center" style="margin-left:45px; width: 100px;">
-          <input class="form-check-input" type="radio" name="estadoEmp" value="Empregado">
-          <label class="form-check-label" for="flexRadioDefault1">
-           Empregado
-          </label>
-        </div>
-        <div class="form-check col-3 align-self-center" style="margin-left: 10px;">
-          <input class="form-check-input" type="radio" name="estadoEmp" value="Desempregado">
-          <label class="form-check-label" for="flexRadioDefault2">
-            Desempregado
-          </label>
-        </div>
-        </div>
-  <div class="col pt-4">
-      <label>Nacionalidade</label>
-      <input type="text" name="nacionalidade" class="form-control">
-      </div>
-      <button 
-      class="btn btn-success"
-      name="btn-cadastrar" 
-      type="submit" 
-      >Cadastrar</button>
-  </form>
-  <div class="text-muted">
-    <a href="./log-curri.php">Fazer login?</a>
   </div>
-</div>
+  </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>

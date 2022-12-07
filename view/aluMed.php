@@ -2,7 +2,7 @@
 
 include_once '../controller/conection.php';
 include_once '../includes/header.php';
-// include_once '../includes/sidebar.php';
+include_once '../includes/sidebar.php';
 
 $per = $_GET['id'];
 $alu = $_GET['alu'];
