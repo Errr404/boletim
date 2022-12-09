@@ -49,9 +49,10 @@ while($row_ano = $resPer->fetch(PDO::FETCH_ASSOC)){
     echo "
     <div class='card text-white bg-dark w-25 mx-auto mt-3 mb-4'>
         <div class='card-body mx-auto'>
+        
             <a href='aluMed.php?id=$periodo&alu=$alu_id' class='text-white'
                 style='text-decoration: none;'>".$periodo." período</a><br>
-            
+        
         </div>
     </div>";
     
@@ -59,9 +60,12 @@ while($row_ano = $resPer->fetch(PDO::FETCH_ASSOC)){
 echo " 
 <div class='card text-white bg-primary w-25 mx-auto mt-3 mb-4'>
     <div class='card-body mx-auto'>
+    
         <a target='_blank' href='../model/gerarPDF.php?id=$alu_id' 
-        class='text-white' style='text-decoration: none;'>Gerar PDF
+        class='text-white' style='text-decoration: none;'><button class='btn-primary' onclick'create()'>Gerar PDF
+        </button>
         </a>
+       
     </div>
 </div>";
 echo "
@@ -79,5 +83,6 @@ echo "
 
 </body>
 <script src="../assets/js/preloader.js"></script>
+<script src="../assets/js/table.js"></script>
 
  </html>
