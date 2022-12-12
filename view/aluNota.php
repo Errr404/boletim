@@ -62,8 +62,7 @@ echo "
     <div class='card-body mx-auto'>
     
         <a target='_blank' href='../model/gerarPDF.php?id=$alu_id' 
-        class='text-white' style='text-decoration: none;'><button class='btn-primary' onclick'create()'>Gerar PDF
-        </button>
+        class='text-white' style='text-decoration: none;'>Gerar PDF
         </a>
        
     </div>

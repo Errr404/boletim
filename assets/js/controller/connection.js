@@ -61,3 +61,30 @@ conn.connect(
         });
     };
 
+
+// async function connect(req, res, next) {
+//     if(global.connection && global.connection.state !== 'disconnect')
+//     return global.connection;
+
+//     const sql = require("mysql2/promise");
+//     const conn = await sql.createConnection({
+//         host: 'localhost',
+//         port: 3306,
+//         user: 'root',
+//         database: 'aluno',
+//         password: ''
+//        });;
+//     console.log("Connection on");
+//     global.connection = conn;
+//     return conn;
+// }
+
+
+// async function selectCustomer(){
+//     const conn = await connect();
+//     const [alu_nome] = await conn.query("SELECT alu_nome FROM tb_aluno");
+//     return alu_nome;
+
+// } 
+// module.exports = {selectCustomer}
+
