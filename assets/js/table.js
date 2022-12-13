@@ -28,18 +28,21 @@ conn.connect(
     });
 
     function readData(){
-        conn.query('SELECT alu_nome FROM tb_aluno', 
+        conn.query('SELECT * FROM tb_aluno', 
             function (err, results, fields) {
                 if (err) throw err;
                 else console.log('Selecionado ' + results.length + ' linhas.');
                 for (i = 0; i < results.length; i++) {
-                    var nome = JSON.stringify(results[i]?.alu_nome);
+                    var nome = results[i]?.alu_nome;
+                    var turma = results[i]?.alu_ano;
                     console.log(nome);
-                    ejs.renderFile("C:/xampp/htdocs/boletim/assets/pdf/MODELO DE BOLETIM.ejs", {nome: nome}, (err,html) => {
+                    console.log(turma);
+                    
+                    ejs.renderFile("C:/xampp/htdocs/boletim/assets/pdf/MODELO DE BOLETIM.ejs", {nome: nome, turma: turma}, (err,html) => {
                         if(err){
                             console.log("erro")
                         } else {
-                            pdf.create(html,{}).toFile("C:/xampp/htdocs/boletim/boletins/boletin de.pdf",(err,res) => {
+                            pdf.create(html,{}).toFile("C:/xampp/htdocs/boletim/boletins/"+nome +".pdf",(err,res) => {
                         if (err){
                             console.log("Error created :(");
                         } else {

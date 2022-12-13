@@ -56,7 +56,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="../view/index.php">
+                        <a href="../view/home.php">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Aluno</span>
                         </a>
