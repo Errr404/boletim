@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
     include_once '../view/../includes/sidebar.php';
     include_once '../controller/conection.php';
     include_once '../includes/header.php';
