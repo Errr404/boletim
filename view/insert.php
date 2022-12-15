@@ -1,7 +1,9 @@
 <?php 
+ session_start(); 
 include_once '../controller/conection.php';
 include_once '../model/insertNotas.php';    
 include_once '../includes/header.php';
+
 ?>
 
 <!DOCTYPE html>

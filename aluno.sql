@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 21-Ago-2022 às 20:33
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 14-Dez-2022 às 12:07
+-- Versão do servidor: 5.7.36
+-- versão do PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,13 +27,15 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `tb_aluno`
 --
 
-CREATE TABLE `tb_aluno` (
-  `alu_id` int(6) NOT NULL,
+DROP TABLE IF EXISTS `tb_aluno`;
+CREATE TABLE IF NOT EXISTS `tb_aluno` (
+  `alu_id` int(6) NOT NULL AUTO_INCREMENT,
   `alu_nome` varchar(50) NOT NULL,
   `alu_turno` varchar(45) NOT NULL,
   `alu_ano` varchar(45) NOT NULL,
-  `alu_foto` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `alu_foto` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`alu_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tb_aluno`
@@ -48,8 +50,9 @@ INSERT INTO `tb_aluno` (`alu_id`, `alu_nome`, `alu_turno`, `alu_ano`, `alu_foto`
 -- Estrutura da tabela `tb_nota`
 --
 
-CREATE TABLE `tb_nota` (
-  `nota_id` int(8) NOT NULL,
+DROP TABLE IF EXISTS `tb_nota`;
+CREATE TABLE IF NOT EXISTS `tb_nota` (
+  `nota_id` int(8) NOT NULL AUTO_INCREMENT,
   `nota_período` varchar(3) DEFAULT NULL,
   `nota_tipo` varchar(10) NOT NULL,
   `nota_port` varchar(3) DEFAULT NULL,
@@ -61,41 +64,32 @@ CREATE TABLE `tb_nota` (
   `nota_cie` varchar(3) DEFAULT NULL,
   `nota_EC` varchar(3) DEFAULT NULL,
   `Faltas` int(3) DEFAULT NULL,
-  `alu_id` int(6) NOT NULL
+  `alu_id` int(6) NOT NULL,
+  PRIMARY KEY (`nota_id`),
+  KEY `fk_alu_nome` (`alu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Índices para tabelas despejadas
---
+-- --------------------------------------------------------
 
 --
--- Índices para tabela `tb_aluno`
---
-ALTER TABLE `tb_aluno`
-  ADD PRIMARY KEY (`alu_id`);
-
---
--- Índices para tabela `tb_nota`
---
-ALTER TABLE `tb_nota`
-  ADD PRIMARY KEY (`nota_id`),
-  ADD KEY `fk_alu_nome` (`alu_id`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
+-- Estrutura da tabela `tb_prof`
 --
 
---
--- AUTO_INCREMENT de tabela `tb_aluno`
---
-ALTER TABLE `tb_aluno`
-  MODIFY `alu_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+DROP TABLE IF EXISTS `tb_prof`;
+CREATE TABLE IF NOT EXISTS `tb_prof` (
+  `prof_id` int(5) NOT NULL AUTO_INCREMENT,
+  `prof_nome` varchar(45) NOT NULL,
+  `prof_login` varchar(45) NOT NULL,
+  `prof_pass` int(6) NOT NULL,
+  PRIMARY KEY (`prof_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- AUTO_INCREMENT de tabela `tb_nota`
+-- Extraindo dados da tabela `tb_prof`
 --
-ALTER TABLE `tb_nota`
-  MODIFY `nota_id` int(8) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `tb_prof` (`prof_id`, `prof_nome`, `prof_login`, `prof_pass`) VALUES
+(1, 'jose', 'admin', 1234);
 
 --
 -- Restrições para despejos de tabelas

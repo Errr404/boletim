@@ -22,7 +22,7 @@ include_once '../controller/conection.php';
 
         //validação dos campos obrigatórios
         if( empty($prd) || empty($mtr) || empty($nt)){
-            echo "<div class='alert alert-danger' role='alert' style='margin: 30px 500px; width: 500px;'>
+            echo "<div class='alert alert-danger d-flex justify-content-center w-50 ' role='alert'>
                 Preencha os campos de perído, tipo de nota e matricula. São campos obrigatórios.
           </div>";
             return;   //executa  e retorna para página

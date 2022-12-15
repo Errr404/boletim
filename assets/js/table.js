@@ -28,17 +28,22 @@ conn.connect(
     });
 
     function readData(){
-        conn.query('SELECT * FROM tb_aluno', 
+        conn.query('SELECT * FROM tb_aluno a INNER JOIN tb_nota n ON a.alu_id = n.alu_id', 
             function (err, results, fields) {
                 if (err) throw err;
                 else console.log('Selecionado ' + results.length + ' linhas.');
                 for (i = 0; i < results.length; i++) {
                     var nome = results[i]?.alu_nome;
                     var turma = results[i]?.alu_ano;
+                    var turno = results[i]?.alu_turno;
+                    var port = results[i]?.nota_port;
+
                     console.log(nome);
                     console.log(turma);
+                    console.log(turno);
+                    console.log(port);
                     
-                    ejs.renderFile("C:/xampp/htdocs/boletim/assets/pdf/MODELO DE BOLETIM.ejs", {nome: nome, turma: turma}, (err,html) => {
+                    ejs.renderFile("C:/xampp/htdocs/boletim/assets/pdf/MODELO DE BOLETIM.ejs", {nome: nome, turma: turma, turno: turno, port: port}, (err,html) => {
                         if(err){
                             console.log("erro")
                         } else {

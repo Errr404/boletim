@@ -1,4 +1,5 @@
 <?php
+session_start();
 //include_once '../controller/conection.php';
 include_once '../model/insertAluno.php';
 include_once '../model/cadastrar.php';

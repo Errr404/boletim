@@ -1,5 +1,5 @@
 <?php
-
+ session_start(); 
 include_once '../controller/conection.php';
 include_once '../includes/header.php';
 // include_once '../includes/sidebar.php';
@@ -27,39 +27,47 @@ if (($resultM) and ($resultM->rowCount() != 0)) {
     }
 }
 
-$maths = "SELECT * FROM tb_nota";
-$mathsQuery = $pdo->prepare($maths);
-$mathsQuery -> execute();
+$mat = "SELECT * FROM tb_nota";
+$matQuery = $pdo->prepare($mat);
+$matQuery -> execute();
 
-while ($row = $mathsQuery -> fetch(PDO::FETCH_ASSOC)){
-    extract($row);
-    $port = array();
-    $mat = array();
+while ($row = $matQuery->fetch(PDO::FETCH_ASSOC)){
+    var_dump($row);
 
-    if($row['nota_port']){
-        $port[$row['nota_período']][$row['nota_tipo']] = $row['nota_port'];
-        $mat[$row['nota_período']][$row['nota_tipo']] = $row['nota_mat'];
     
-    }
-    echo "PORT".json_encode($port).[1][""];
-    echo "MAT".json_encode($mat). $mat[2][""];
-
-    $types = array();
-    $types = array(0 => "parcial", 1 => "global");
-
-    for($j = 1; $j <= 4; $j++) {
-        for($i = 1; $i <= 4; $i++) {
-            $soma = array_sum($port[$i]);
-            $soma = array_sum($mat[$i]);
-            $avg = ($soma) / 2;
-            $avg = number_format($avg, 1, '.', '');
-            echo $avg;        // variável responsável por imprimir o valor.
-            $i++;
-        }
-    
-        $j++;
-    } 
 }
+
+// while ($row = $mathsQuery -> fetch(PDO::FETCH_ASSOC)){
+//     extract($row);
+//     $port = array();
+//     $mat = array();
+
+//     if($row['nota_port']){
+//         $port[$row['nota_período']][$row['nota_tipo']] = $row['nota_port'];
+//         $mat[$row['nota_período']][$row['nota_tipo']] = $row['nota_mat'];
+    
+//     }
+//     echo "PORT".json_encode($port).[1][""];
+//     echo "MAT".json_encode($mat). $mat[2][""];
+
+//     $types = array();
+//     $types = array(0 => "parcial", 1 => "global");
+
+//     for($j = 1; $j <= 4; $j++) {
+//         for($i = 1; $i <= 4; $i++) {
+//             $soma = array_sum($port[$i]);
+//             $soma = array_sum($mat[$i]);
+//             $avg = ($soma) / 2;
+//             $avg = number_format($avg, 1, '.', '');
+//             echo $avg;        // variável responsável por imprimir o valor.
+//             $i++;
+//         }
+    
+//         $j++;
+//     } 
+// }
+
+
 
 ?>
 

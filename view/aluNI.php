@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
     include_once '../includes/header.php';
     include_once '../includes/sidebar.php';
     include_once '../controller/conection.php';
@@ -49,7 +49,7 @@ if($ne->rowCount() == 0) {
     $.each($(".valor-nota"), function () {
         var valorNota = $(this).html()
 
-        if (valorNota < 6) {
+        if (valorNota < ('6,0')) {
             $(this).parent().removeClass('bg-primary').addClass('bg-danger')
         } else {
             $(this).parent().removeClass('bg-danger').addClass('bg-primary')

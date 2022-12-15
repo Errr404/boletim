@@ -6,7 +6,6 @@
     include_once '../includes/sidebar.php';
     // include_once '../model/login.php';
    
-    
     if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['pass']) == true))
     {
       header('location:index.php');
@@ -14,6 +13,7 @@
     
     $logado = $_SESSION['login'];
       }
+
 
 ?>
 

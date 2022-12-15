@@ -307,3 +307,13 @@ body.dark .switch::before{
 body.dark .home .text{
     color: var(--text-color);
 }
+
+.sidebar .bottom-content .profile-content img{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0 10px 0 5px;
+    background: #006400;
+    transition: all 0.5s ease;
+  }
