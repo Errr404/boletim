@@ -49,7 +49,7 @@ if($ne->rowCount() == 0) {
     $.each($(".valor-nota"), function () {
         var valorNota = $(this).html()
 
-        if (valorNota < ('6,0')) {
+        if (valorNota < ('6')) {
             $(this).parent().removeClass('bg-primary').addClass('bg-danger')
         } else {
             $(this).parent().removeClass('bg-danger').addClass('bg-primary')
