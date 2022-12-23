@@ -36,8 +36,8 @@ function arredondar(n) {
 // fim da função
 
 
-
 function readData() {
+
     conn.query('SELECT * FROM tb_aluno a INNER JOIN tb_nota n ON a.alu_id = n.alu_id where n.alu_id = 2',
         function (err, results, fields) {
             if (err) throw err;
@@ -201,23 +201,23 @@ function readData() {
 
 
 
-    console.log(nome);
-    console.log(turma);
-    console.log(turno);
-    console.log(port);
-    console.log(mat);
-    console.log(arte);
-    console.log(EF);
-    console.log(EC);
-    console.log(geo);
-    console.log(hist);
-    console.log(cie);
-    console.log(ing);
-    console.log(falts);
-    console.log(soma);
-    console.log(faltT);
-    console.log(p3);
-    console.log(Pmed1);
+    // console.log(nome);
+    // console.log(turma);
+    // console.log(turno);
+    // console.log(port);
+    // console.log(mat);
+    // console.log(arte);
+    // console.log(EF);
+    // console.log(EC);
+    // console.log(geo);
+    // console.log(hist);
+    // console.log(cie);
+    // console.log(ing);
+    // console.log(falts);
+    // console.log(soma);
+    // console.log(faltT);
+    // console.log(p3);
+    // console.log(Pmed1);
 
 
     // console.log(port2);
