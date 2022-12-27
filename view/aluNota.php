@@ -59,8 +59,8 @@
 <div class='card text-white bg-primary w-25 mx-auto mt-3 mb-4'>
     <div class='card-body mx-auto'>
     
-        <a target='_blank' href='../model/gerarPDF.php?id=$alu_id' 
-        class='text-white' onclick=readData(); style='text-decoration: none;'>Gerar PDF
+        <a  href='http://localhost:3000/?id=".$alu_id."'
+        class='text-white' onclick='readData();' style='text-decoration: none;'>Gerar PDF
         </a>
        
     </div>
@@ -79,29 +79,17 @@
     ?>
 
 </body>
-<script>
-    function pesqalu() {
+<script type="module" src="../assets/js/table.js"></script>
+<script >
+    function readData() {
         const urlParams = new URLSearchParams(window.location.search);
         const idParam = urlParams.get('id');
-        const urlParams = new URLSearchParams(window.location.search);
-        const idParam = urlParams.get('id');
+        console.log(idParam);
     }
-
-    function res(a) {
-        var dados = new FormData();
-        dados.append('alu_ano', a);
-        $.ajax({
-            url: 'http://localhost/boletim/model/consulta.php',
-            method: 'post',
-            data: dados,
-            processData: false,
-            contentType: false
-        }).done(function(resposta) {
-            $('#alu').html(resposta);
-        });
-    }
+    
 </script>
+
 <script src="../assets/js/preloader.js"></script>
-<script src="../assets/js/table.js"></script>
+
 
 </html>
