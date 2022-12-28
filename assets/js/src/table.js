@@ -41,13 +41,11 @@ function arredondar(n) {
 
 // fim da função
 
+ 
 
-function readData() {
+function readData(idParam) {
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const idParam = urlParams.get('id');
-
-        
+           
     conn.query('SELECT * FROM tb_aluno a INNER JOIN tb_nota n ON a.alu_id = n.alu_id where n.alu_id ='+idParam,
         function (err, results, fields) {
             if (err) throw err;
@@ -247,7 +245,7 @@ function readData() {
     })
     
 
-    app.get('/id='+idParam , (request, response)=>{
+    app.get('/?id='+idParam , (request, response)=>{
         
         
     ejs.renderFile("C:/xampp/htdocs/boletim/assets/pdf/MODELO DE BOLETIM.ejs", {

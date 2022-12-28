@@ -79,15 +79,27 @@
     ?>
 
 </body>
-<script type="module" src="../assets/js/table.js"></script>
+<script type="module" src="../assets/js/src/table.js"></script>
 <script >
     function readData() {
         const urlParams = new URLSearchParams(window.location.search);
         const idParam = urlParams.get('id');
         console.log(idParam);
-    }
+
+        $.ajax({
+        url: 'https://localhost:3000/?id=' + idParam,
+        type: 'POST',
+        data: JSON.stringify(idParam),
+        contentType: false,
+        success: () => {
+            console.log("Sucesso!!");
+        }
+    });
+}
     
 </script>
+
+
 
 <script src="../assets/js/preloader.js"></script>
 
