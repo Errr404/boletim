@@ -59,7 +59,7 @@
 <div class='card text-white bg-primary w-25 mx-auto mt-3 mb-4'>
     <div class='card-body mx-auto'>
     
-        <a  href='http://localhost:3000/pdf?id=".$alu_id."'
+        <a  href='http://localhost:3000/'
         class='text-white' onclick='readData(); value=".$alu_id."' style='text-decoration: none;'>Gerar PDF
         </a>
        

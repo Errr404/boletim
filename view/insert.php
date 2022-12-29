@@ -87,6 +87,7 @@ include_once '../includes/header.php';
                     <input type="text" name="nota_geo" placeholder="Nota de Geografia" class="form-control" style="margin-top: 5px;">
                     <input type="text" name="nota_cie" placeholder="Nota de Ciências" class="form-control" style="margin-top: 5px;">
                     <input type="text" name="nota_EC" placeholder="Nota de Ética e Cidadania" class="form-control" style="margin-top: 5px;">
+                    <input type="text" name="nota_ing" placeholder="Nota de Inglês" class="form-control" style="margin-top: 5px;">
                     <input type="text" name="nota_arte" placeholder="Nota de Artes" class="form-control" style="margin-top: 5px;">
                     <input type="text" name="Faltas" placeholder="Número de Faltas" class="form-control" style="margin-top: 5px;">
                     

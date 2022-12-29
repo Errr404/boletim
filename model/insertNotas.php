@@ -17,6 +17,7 @@ include_once '../controller/conection.php';
         $n6 = filter_input(INPUT_POST, 'nota_cie');       //nota6
         $n7 = filter_input(INPUT_POST, 'nota_EC');       //nota7
         $n8 = filter_input(INPUT_POST, 'nota_arte');       //nota8             
+        $n9 = filter_input(INPUT_POST, 'nota_ing');       //nota9             
         $flt = filter_input(INPUT_POST, 'Faltas');  //faltas
         $mtr = filter_input(INPUT_POST, 'alu_id');    //mtr 
 
@@ -39,8 +40,8 @@ include_once '../controller/conection.php';
           </div>";
             }
             else {
-        $insert = "INSERT INTO `tb_nota` (`nota_id`, `nota_período`, `nota_tipo`, `nota_port`, `nota_arte`, `nota_EF`, `nota_hist`, `nota_geo`, `nota_mat`, `nota_cie`, `nota_EC`, `Faltas`, `alu_id`) VALUES
-         (NULL, :prd, :nt, :n1, :n2, :n3, :n4, :n5, :n6, :n7, :n8, :flt, :mtrl )";  //inserção dos dados no BD caso o aluno exista
+        $insert = "INSERT INTO `tb_nota` (`nota_id`, `nota_período`, `nota_tipo`, `nota_port`, `nota_arte`, `nota_EF`, `nota_hist`, `nota_geo`, `nota_mat`, `nota_cie`, `nota_EC`, `nota_ing`, `Faltas`, `alu_id`) VALUES
+         (NULL, :prd, :nt, :n1, :n2, :n3, :n4, :n5, :n6, :n7, :n8, n9, :flt, :mtrl )";  //inserção dos dados no BD caso o aluno exista
  
                 //bindagem dos parâmetros
         $result = $pdo->prepare($insert);
@@ -54,6 +55,7 @@ include_once '../controller/conection.php';
         $result->bindParam("n6", $n6, PDO::PARAM_STR);
         $result->bindParam("n7", $n7, PDO::PARAM_STR);
         $result->bindParam("n8", $n8, PDO::PARAM_STR);
+        $result->bindParam("n9", $n9, PDO::PARAM_STR);
         $result->bindParam("flt", $flt, PDO::PARAM_INT);
         $result->bindParam("mtrl", $mtr, PDO::PARAM_INT);
         if($result->execute()){

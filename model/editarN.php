@@ -18,7 +18,7 @@ ob_start();
 // SELECT DAS NOTAS
 
 $editNotas = "SELECT nota_período, nota_port, nota_mat, nota_cie, nota_geo, nota_hist,
-nota_EC, nota_EF, nota_arte, Faltas FROM tb_nota WHERE alu_id = :id AND nota_tipo = :tp AND nota_período = :per";
+nota_EC, nota_EF, nota_arte, nota_ing, Faltas FROM tb_nota WHERE alu_id = :id AND nota_tipo = :tp AND nota_período = :per";
 $queryNotas = $pdo->prepare($editNotas);
 $queryNotas->bindParam(':per', $per, PDO::PARAM_STR);
 $queryNotas->bindParam(':tp', $tp, PDO::PARAM_STR);
@@ -48,7 +48,7 @@ $queryNotas->execute();
     
     
                 $up = "UPDATE tb_nota SET nota_port = :port, nota_mat = :mat, nota_cie = :cie, nota_geo = :geo, 
-                nota_hist = :hist, nota_EC = :EC, nota_EF = :EF, nota_arte = :arte , Faltas = :faltas WHERE alu_id = :id AND 
+                nota_hist = :hist, nota_EC = :EC, nota_EF = :EF, nota_arte = :arte , nota_ing = :ing, Faltas = :faltas WHERE alu_id = :id AND 
                 nota_período = :per AND nota_tipo = :tp";
                 $upQuery = $pdo->prepare($up);
                 $upQuery->bindParam(':port', $chg['port'], PDO::PARAM_STR);
@@ -59,6 +59,7 @@ $queryNotas->execute();
                 $upQuery->bindParam(':EC', $chg['ec'], PDO::PARAM_STR);    
                 $upQuery->bindParam(':EF', $chg['ef'], PDO::PARAM_STR);    
                 $upQuery->bindParam(':arte', $chg['arte'], PDO::PARAM_STR);    
+                $upQuery->bindParam(':ing', $chg['ing'], PDO::PARAM_STR);    
                 $upQuery->bindParam(':faltas', $chg['faltas'], PDO::PARAM_STR); 
                 $upQuery->bindParam(':id', $alu, PDO::PARAM_INT);
                 $upQuery->bindParam(':per', $per, PDO::PARAM_STR);
@@ -165,6 +166,15 @@ $queryNotas->execute();
                         echo $row['nota_arte'];
                     } elseif (isset($chg['nota_arte'])) {
                         echo $chg['nota_arte'];
+                    } ?>" class="form-control mt-2" style="margin-top: 5px;">
+                        
+    <small>Inglês</small>
+    <span class="text-danger">*</span>
+    <input type="text" name="ing" placeholder="" value="<?php
+                    if (isset($row['nota_ing'])) {
+                        echo $row['nota_ing'];
+                    } elseif (isset($chg['nota_ing'])) {
+                        echo $chg['nota_ing'];
                     } ?>" class="form-control mt-2" style="margin-top: 5px;">
 
 
