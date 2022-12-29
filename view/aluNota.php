@@ -59,8 +59,8 @@
 <div class='card text-white bg-primary w-25 mx-auto mt-3 mb-4'>
     <div class='card-body mx-auto'>
     
-        <a  href='http://localhost:3000/?id=".$alu_id."'
-        class='text-white' onclick='readData();' style='text-decoration: none;'>Gerar PDF
+        <a  href='http://localhost:3000/pdf?id=".$alu_id."'
+        class='text-white' onclick='readData(); value=".$alu_id."' style='text-decoration: none;'>Gerar PDF
         </a>
        
     </div>
@@ -81,7 +81,7 @@
 </body>
 <script type="module" src="../assets/js/src/table.js"></script>
 <script >
-    function readData() {
+    function readData(idParam) {
         const urlParams = new URLSearchParams(window.location.search);
         const idParam = urlParams.get('id');
         console.log(idParam);

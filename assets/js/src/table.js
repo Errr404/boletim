@@ -45,8 +45,10 @@ function arredondar(n) {
 
 function readData(idParam) {
 
-           
-    conn.query('SELECT * FROM tb_aluno a INNER JOIN tb_nota n ON a.alu_id = n.alu_id where n.alu_id ='+idParam,
+    app.get('/pdf', (req, res) => {
+        var idParam = req.body.alu_id;
+    
+    conn.query('SELECT * FROM tb_aluno a INNER JOIN tb_nota n ON a.alu_id = n.alu_id where n.alu_id = ' +idParam,
         function (err, results, fields) {
             if (err) throw err;
             else console.log('Selecionado ' + results.length + ' linhas.');
@@ -83,6 +85,7 @@ function readData(idParam) {
                 var port8 = Number(results[7]?.nota_port);
                 var Pmed4 =  (port7+port8)/2;
                 var soma = port + port2 + port3 + port4 + port5 + port6 + port7 + port8;
+                var medfP = (Pmed1 + Pmed2 + Pmed3 + Pmed4)/4;
 
                 var mat = Number(results[0]?.nota_mat);
                 var mat2 = Number(results[1]?.nota_mat);
@@ -97,6 +100,7 @@ function readData(idParam) {
                 var mat8 = Number(results[7]?.nota_mat);
                 var Mmed4 =  (mat7+mat8)/2;
                 var somaM = mat+mat2+mat3+mat4+mat5+mat6+mat7+mat8;
+                var medfM = (Mmed1 + Mmed2 + Mmed3 + Mmed4)/4;
 
                 var art = Number(results[0]?.nota_arte);
                 var art2 = Number(results[1]?.nota_arte);
@@ -111,6 +115,7 @@ function readData(idParam) {
                 var art8 = Number(results[7]?.nota_arte);
                 var Amed4 =  (art7+art8)/2;
                 var somaA = art+art2+art3+art4+art5+art6+art7+art8;
+                var medfA = (Amed1 + Amed2 + Amed3 + Amed4)/4;
 
                 var ef = Number(results[0]?.nota_EF);
                 var ef2 = Number(results[1]?.nota_EF);
@@ -125,6 +130,7 @@ function readData(idParam) {
                 var ef8 = Number(results[7]?.nota_EF);
                 var EFmed4 =  (ef7+ef8)/2;
                 var somaEF = ef+ef2+ef3+ef4+ef5+ef6+ef7+ef8;
+                var medfEF = (EFmed1 + EFmed2 + EFmed3 + EFmed4)/4;
 
                 var ec = Number(results[0]?.nota_EC);
                 var ec2 = Number(results[1]?.nota_EC);
@@ -139,6 +145,7 @@ function readData(idParam) {
                 var ec8 = Number(results[7]?.nota_EC);
                 var ECmed4 =  (ec7+ec8)/2;
                 var somaEC = ec+ec2+ec3+ec4+ec5+ec6+ec7+ec8;
+                var medfEC = (ECmed1 + ECmed2 + ECmed3 + ECmed4)/4;
 
                 var geo = Number(results[0]?.nota_geo);
                 var geo2 = Number(results[1]?.nota_geo);
@@ -153,6 +160,7 @@ function readData(idParam) {
                 var geo8 = Number(results[7]?.nota_geo);
                 var Gmed4 =  (geo7+geo8)/2;
                 var somaG = geo+geo2+geo3+geo4+geo5+geo6+geo7+geo8;
+                var medfG = (Gmed1 + Gmed2 + Gmed3 + Gmed4)/4;
 
                 var hist = Number(results[0]?.nota_hist);
                 var hist2 = Number(results[1]?.nota_hist);
@@ -167,6 +175,7 @@ function readData(idParam) {
                 var hist8 = Number(results[7]?.nota_hist);
                 var Hmed4 =  (hist7+hist8)/2;
                 var somaH = hist+hist2+hist3+hist4+hist5+hist6+hist7+hist8;
+                var medfH = (Hmed1 + Hmed2 + Hmed3 + Hmed4)/4;
 
                 var cie = Number(results[0]?.nota_cie);
                 var cie2 = Number(results[1]?.nota_cie);
@@ -181,6 +190,7 @@ function readData(idParam) {
                 var cie8 = Number(results[7]?.nota_cie);
                 var Cmed4 =  (cie7+cie8)/2;
                 var somaC = cie+cie2+cie3+cie4+cie5+cie6+cie7+cie8;
+                var medfC = (Cmed1 + Cmed2 + Cmed3 + Cmed4)/4;
 
                 var ing = Number(results[0]?.nota_ing);
                 var ing2 = Number(results[1]?.nota_ing);
@@ -195,6 +205,7 @@ function readData(idParam) {
                 var ing8 = Number(results[7]?.nota_ing);
                 var Imed4 =  (ing7+ing8)/2;
                 var somaI = ing+ing2+ing3+ing4+ing5+ing6+ing7+ing8;
+                var medfI = (Imed1 + Imed2 + Imed3 + Imed4)/4;
 
                 var falts1 = results[0]?.Faltas+results[1]?.Faltas;
                 var falts2 = results[2]?.Faltas+results[3]?.Faltas;
@@ -233,6 +244,7 @@ function readData(idParam) {
     console.log(port6);
     console.log(port7);
     console.log(port8);
+    console.log(medfP);
 
     app.get('/pdf', async(request, response) => {
 
@@ -245,7 +257,7 @@ function readData(idParam) {
     })
     
 
-    app.get('/?id='+idParam , (request, response)=>{
+    // app.get('/' , (request, response)=>{
         
         
     ejs.renderFile("C:/xampp/htdocs/boletim/assets/pdf/MODELO DE BOLETIM.ejs", {
@@ -264,6 +276,7 @@ function readData(idParam) {
         port8: (arredondar(results[7]?.nota_port)),
         Pmed4: arredondar(Pmed4),
         portS: soma,
+        medfP : medfP,
 
         mat: (arredondar(results[0]?.nota_mat)),
         mat2: (arredondar(results[1]?.nota_mat)),
@@ -278,6 +291,7 @@ function readData(idParam) {
         mat8: (arredondar(results[7]?.nota_mat)),
         Mmed4 : arredondar(Mmed4),
         matS : somaM,
+        medfM : medfM,
 
         art: (arredondar(results[0]?.nota_arte)),
         art2: (arredondar(results[1]?.nota_arte)),
@@ -292,6 +306,7 @@ function readData(idParam) {
         art8: (arredondar(results[7]?.nota_arte)),
         Amed4 : arredondar(Amed4),
         artS : somaA,
+        medfA : medfA,
 
         ef: (arredondar(results[0]?.nota_EF)),
         ef2: (arredondar(results[1]?.nota_EF)),
@@ -306,6 +321,7 @@ function readData(idParam) {
         ef8: (arredondar(results[7]?.nota_EF)),
         EFmed4 : arredondar(EFmed4),
         efS: somaEF,
+        medfEF : medfEF,
 
         ec: (arredondar(results[0]?.nota_EC)),
         ec2: (arredondar(results[1]?.nota_EC)),
@@ -320,6 +336,7 @@ function readData(idParam) {
         ec8: (arredondar(results[7]?.nota_EC)),
         ECmed4 : arredondar(ECmed4),
         ecS: somaEC,
+        medfEC : medfEC,
 
         geo: (arredondar(results[0]?.nota_geo)),
         geo2: (arredondar(results[1]?.nota_geo)),
@@ -334,6 +351,7 @@ function readData(idParam) {
         geo8: (arredondar(results[7]?.nota_geo)),
         Gmed4 : arredondar(Gmed4),
         geoS: somaG,
+        medfG : medfG,
 
         hist: (arredondar(results[0]?.nota_hist)),
         hist2: (arredondar(results[1]?.nota_hist)),
@@ -348,6 +366,7 @@ function readData(idParam) {
         hist8: (arredondar(results[7]?.nota_hist)),
         Hmed4 : arredondar(Hmed4),
         histS: somaH,
+        medfH : medfH,
 
         cie: (arredondar(results[0]?.nota_cie)),
         cie2: (arredondar(results[1]?.nota_cie)),
@@ -362,6 +381,7 @@ function readData(idParam) {
         cie8: (arredondar(results[7]?.nota_cie)),
         Cmed4 : arredondar(Cmed4),
         cieS: somaC,
+        medfC : medfC,
 
         ing: (arredondar(results[0]?.nota_ing)),
         ing2: (arredondar(results[1]?.nota_ing)),
@@ -376,6 +396,7 @@ function readData(idParam) {
         ing8: (arredondar(results[7]?.nota_ing)),
         Imed4: arredondar(Imed4),
         ingS: somaI,
+        medfI : medfI,
 
         falts1: falts1,
         falts2: falts2,
@@ -402,7 +423,7 @@ function readData(idParam) {
         }
     })
     return response.send('PDF GERADO');
-})
+
 }
 console.log('done.');
             })
@@ -411,8 +432,8 @@ conn.end(
         if (err) throw err;
         else console.log('Closing connection.')
     });
-    };
-
+    });
+}
 
 
 
