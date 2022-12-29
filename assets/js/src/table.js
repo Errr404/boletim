@@ -46,7 +46,7 @@ function arredondar(n) {
 function readData(idParam) {
 
     app.get('/pdf', (req, res) => {
-        var idParam = req.body.alu_id;
+        var idParam = req.body.id;
     
     conn.query('SELECT * FROM tb_aluno a INNER JOIN tb_nota n ON a.alu_id = n.alu_id where n.alu_id = ' +idParam,
         function (err, results, fields) {
